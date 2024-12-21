@@ -5,9 +5,8 @@ WORKDIR /app
 COPY package*.json ./
 
 RUN npm install
-
+# Rebuild sqlite3 for the container's platform
+RUN npm rebuild sqlite3
 COPY . .
 
-EXPOSE 3000
-
-CMD ["node", "app.js"]
+EXPOSE 8080

@@ -3,10 +3,11 @@ import createAllTables from "./infra/create_tables.js"
 import dotenv from "dotenv"
 import userRouter from "./routes/UserRoute.js";
 import questionRoutes from "./routes/questionRoutes.js"
+import cors from "cors"
 
 dotenv.config();
 const app = express();
-
+app.use(cors());
 
 async function main() {
   await createAllTables();

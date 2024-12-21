@@ -20,4 +20,20 @@ async function getUsers() {
     console.log(data);
 }
 
-insert("Gian Lagi", "Pacar", "Bagaimana cara mendapatkan pacar yang baru lagi?");
+async function getAllQuestions() {
+    const resp = await fetch("http://localhost:8080/api/questions");
+    const data = await resp.json();
+    console.log(data);
+}
+
+async function deleteQuestion(id) {
+    const resp = await fetch("http://localhost:8080/api/questions/" + id, {
+        method: "DELETE"
+    });
+    const response = await resp.json();
+    console.log(response);
+}
+// insert("", "Coba pertanyaan kosong", "");
+// getAllQuestions();
+
+deleteQuestion(20);

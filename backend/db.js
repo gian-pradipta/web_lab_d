@@ -2,7 +2,7 @@ import {open} from 'sqlite'
 import sqlite3 from 'sqlite3'
 
 const config = {
-    filename: './database.db',
+    filename: '../database.db',
     driver: sqlite3.Database,
 }
 

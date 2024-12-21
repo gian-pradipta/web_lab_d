@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    ports:
+      - 8080:8080
+    volumes:
+      - ./backend:/app
+      - ./database.db:/app/database.db
+      - /app/node_modules
+    command: ["node", "./app.js"]
+
+  frontend:
+    image: nginx:latest
+    container_name: frontend
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    ports:
+      - 5000:80
+    restart: always
