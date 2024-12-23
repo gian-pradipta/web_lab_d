@@ -4,8 +4,8 @@ import { Request, Response } from "express"
 
 export class QuestionController {
     private service : QuestionService;
-    private static clients : any[];
-    
+    private static clients : any[] = [];
+
     constructor(service : QuestionService) {
         this.service = service;
     }

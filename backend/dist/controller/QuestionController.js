@@ -70,4 +70,5 @@ class QuestionController {
     }
 }
 exports.QuestionController = QuestionController;
+QuestionController.clients = [];
 //# sourceMappingURL=QuestionController.js.map
