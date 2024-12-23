@@ -30,6 +30,7 @@ const submitQuestion = async (e) => {
         for (const error of errors.value)
             errMessage += `- ${error}`
         message.value = errMessage;
+        modalTitle.value = "Error";
         popUp.value = true;
     } else {
         message.value = "Berhasil insert data!";
@@ -52,9 +53,9 @@ const toQuestionList = () => {
 
 <template>
     <Navbar></Navbar>
-    <NotificationModal @button-clicked="togglePopUp" v-bind="{ title: modalTitle, content: message, open: popUp }"></NotificationModal>
+    <NotificationModal @button-clicked="togglePopUp" v-bind="{ title: modalTitle, content: message, open: popUp, success: !isError }"></NotificationModal>
     <div class="text-center">
-        <button  @click="toQuestionList" class="btn btn-primary ms-2" type="button">
+        <button  @click="toQuestionList" class="btn btn-dark text-light ms-2" type="button">
             Question List
         </button>
     </div>

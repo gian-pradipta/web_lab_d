@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+#wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Ensures wrapping */
+    /* gap: 10px; Space between boxes */
+    background-color: rebeccapurple;
+    width: 200px;
+    transition: all 0.3s ease-in-out; /* Smooth animations for layout changes */
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+    background-color: teal;
+    transition: margin 1s ease-in-out, transform 1s ease-in-out; 
+    /* Smooth removal animation */
+}
+
+</style>
+<body>
+    <div id="wrapper">
+        <div class="box"></div>
+        <div class="box" style="background-color: red;"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <script>
+        const wrapper = document.getElementById('wrapper');
+        function removeBox(index) {
+            const boxes = wrapper.querySelectorAll('.box');
+            if (boxes[index]) {
+                const boxToRemove = boxes[index];
+                boxToRemove.style.transform = 'scale(0)'; // Shrink margin
+                boxToRemove.style.margin = '-25px'; // Shrink margin
+                
+                boxToRemove.addEventListener('transitionend', () => {
+                    boxToRemove.remove();
+                }, { once: true });
+            }
+        }
+
+        // Example: Remove the leftmost box (index 0) after 1 second
+        setTimeout(() => removeBox(0), 1000);
+
+    </script>     
+</body>
+</html>
