@@ -37,6 +37,12 @@ export class QuestionController {
         return res.status(response.status).json(response);
     }
 
+    public async getQuestion(req : Request, res : Response) {
+        const id : number = Number(req.params.id);
+        const response = await this.service.getQuestion(id);
+        return res.status(response.status).json(response);
+    }
+
     public async insertQuestion(req : Request, res : Response) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

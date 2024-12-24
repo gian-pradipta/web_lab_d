@@ -19,6 +19,20 @@ export default function useQuestions() {
         isLoading.value = false;
     };
 
+    const fetchQuestion = async (id : number) => {
+        isLoading.value = true;
+        try {
+            const resp = await fetch(`http://localhost:8080/api/questions/${id}`);
+            const data = await resp.json();
+            // console.log(id);
+            questions.value = data.data;
+        } catch (error) {
+            console.log(error);
+            questions.value = [];
+        }
+        isLoading.value = false;
+    }
+
     const postQuestion = async (bod : QuestionTypes.PostBody) => {
         isLoading.value = true;
         try {
@@ -66,6 +80,7 @@ export default function useQuestions() {
         questions,
         isLoading,
         fetchQuestions,
+        fetchQuestion,
         postQuestion,
         deleteQuestion,
         isError,

@@ -14,6 +14,7 @@ export class SQLiteDatabase implements IDatabase {
         try {
             this.db = await open(config);
             console.log("Database connection established");
+            await this.db.exec(`PRAGMA foreign_keys = ON`);
         } catch (error) {
             console.error("Error opening the database:", error);
             throw error;
@@ -42,5 +43,14 @@ export class SQLiteDatabase implements IDatabase {
             title TEXT NOT NULL,
             body TEXT NOT NULL
         )`);
+
+        await this.db.exec(`
+            CREATE TABLE IF NOT EXISTS answers (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                question_id INTEGER NOT NULL,
+                body TEXT NOT NULL,
+                FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+            )
+        `);
     }
 }

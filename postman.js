@@ -34,10 +34,32 @@ async function deleteQuestion(id) {
     console.log(response);
 }
 
+async function getQuestion(id) {
+    const resp = await fetch("http://localhost:8080/api/questions/" + id);
+    const data = await resp.json();
+    console.log(data);
+}
+
 async function insertAll() {
     for (let i = 0; i < 20; i++) 
         await insert("Anon", "Lorem", "Lorem Ipsum Dolor Si");
 }
+
+async function insertAnswer(question_id, bod) {
+    const resp = await fetch("http://localhost:8080/api/answers", {
+        method: "POST",
+        body: JSON.stringify({
+            question_id : question_id,
+            body: bod,
+        }),
+        headers: {
+            'Content-Type': 'application/json',  // Content type is JSON
+        },
+    })
+    const data = await resp.text();
+    console.log(data);
+}
 // getAllQuestions();
-insertAll();
+// getQuestion(104);
+insertAnswer(1, "Salah ini");
 // deleteQuestion(2);

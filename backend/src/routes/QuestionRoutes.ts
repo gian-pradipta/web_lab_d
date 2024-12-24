@@ -21,6 +21,7 @@ export class QuestionRoutes {
 
     public getRoutes() {
         this.router.get("/", async (req, res) => {this.controller.getAllQuestions(req, res)});
+        this.router.get("/:id", async (req, res) => {this.controller.getQuestion(req, res)});
         this.router.post("/", 
             QuestionRoutes.insertRules,
             async (req, res) => {this.controller.insertQuestion(req, res)});

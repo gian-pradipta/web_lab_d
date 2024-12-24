@@ -16,7 +16,23 @@ export class QuestionService {
             response = {status: 200, success: true, message: "Berhasil ambil data", data: data}
         } catch (error) {
             console.log(error.message);
-            // response = new QuestionResponse(400, true, "Gagal ambil data", data=null, error.message);
+            response = {
+                status: 400,
+                success: false,
+                message: "Gagal ambil data",
+                errors: error.message,
+            }
+        }
+        return response;
+    }
+
+    public async getQuestion(id : number) : Promise<ErrorResponse | GetResponse> {
+        let response : ErrorResponse | GetResponse;
+        try {
+            const data = await this.repo.getQuestion(id);
+            response = {status: 200, success: true, message: "Berhasil ambil data", data: data ? [data] : [] }
+        } catch (error) {
+            console.log(error.message);
             response = {
                 status: 400,
                 success: false,
