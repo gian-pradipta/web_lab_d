@@ -97,8 +97,8 @@ const toQuestionList = () => {
                 <div class="row mt-5">
                     <div class="col"></div>
                     <div class="col-2">
-                        <button @click="submitQuestion" type="button" class="me-3 btn btn-primary">Submit</button>
-                        <button @click="cancelQuestion" type="button" class="btn btn-danger">Cancel</button>
+                        <button @click="submitQuestion" type="button" class="me-3 text-light btn btn-dark">Submit</button>
+                        <button @click="cancelQuestion" type="button" class="btn btn-secondary">Cancel</button>
                     </div>
                     <div class="col"></div>
                 </div>

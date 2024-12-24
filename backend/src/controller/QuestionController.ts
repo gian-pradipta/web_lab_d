@@ -54,9 +54,7 @@ export class QuestionController {
     
     public async deleteQuestion(req : Request, res : Response) {
         const id : number = Number(req.params.id);
-        console.log("Hello");
         const response = await this.service.deleteQuestion(id);
-        console.log("Wor");
         if (response.success) {
             QuestionController.notifyAllClients(QuestionController.clients, "delete", response)
         }

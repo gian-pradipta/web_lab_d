@@ -33,7 +33,11 @@ async function deleteQuestion(id) {
     const response = await resp.json();
     console.log(response);
 }
-// insert("", "Coba pertanyaan kosong", "");
-getAllQuestions();
 
-deleteQuestion(2);
+async function insertAll() {
+    for (let i = 0; i < 20; i++) 
+        await insert("Anon", "Lorem", "Lorem Ipsum Dolor Si");
+}
+// getAllQuestions();
+insertAll();
+// deleteQuestion(2);
