@@ -24,8 +24,8 @@ export class QuestionRoutes {
         this.router.post("/", 
             QuestionRoutes.insertRules,
             async (req, res) => {this.controller.insertQuestion(req, res)});
-        this.router.delete("/:id", async (req, res) => {this.controller.deleteQuestion});
-        this.router.get("/refresh", async (req, res) => {this.controller.logConnector});
+        this.router.delete("/:id", async (req, res) => {this.controller.deleteQuestion(req, res)});
+        this.router.get("/refresh", async (req, res) => {this.controller.logConnector(req, res)});
         return this.router;
     }
 }

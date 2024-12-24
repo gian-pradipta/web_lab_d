@@ -49,12 +49,7 @@ const deleteQuestionCard = async (id) => {
         popUp.value = true;
         title.value = "Error";
     } else {
-        message.value = "Berhasil hapus data!";
-        popUp.value = true;
-        title.value = "Sukses";
-        const boxes = document.querySelectorAll(".box");
-        console.log(boxes);
-        const i = Array.from(boxes).map((box) => box.id).indexOf(id);
+        const i = questions.map((box) => box.id).indexOf(id);
         QuestionListHelper.removeBox(i);
     }
 };

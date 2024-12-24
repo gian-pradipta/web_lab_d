@@ -34,6 +34,6 @@ async function deleteQuestion(id) {
     console.log(response);
 }
 // insert("", "Coba pertanyaan kosong", "");
-// getAllQuestions();
+getAllQuestions();
 
-deleteQuestion(20);
+deleteQuestion(2);
