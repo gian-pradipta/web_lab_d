@@ -48,7 +48,7 @@ export class QuestionService {
         try {
             if (!newQuestion.name) newQuestion.name = "Anonymous";
             const result = await this.repo.insertQuestion(newQuestion);
-            response = {status: 200, success: true, message: "Berhasil Insert data", inserted_data : result};
+            response = {status: 200, success: true, message: "Berhasil Insert data", inserted_data : result.lastRecord[0]};
         } catch (err) {
             response = {status: 201, success: false, message: "Gagal Insert data", errors: [err.message]};
         }

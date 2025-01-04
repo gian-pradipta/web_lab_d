@@ -1,24 +1,22 @@
-import { QuestionBody } from "./QuestionTypes"
-
 export type ErrorResponse = {
-    status : number,
-    success : false,
-    message : string,
-    errors : string[]
+    status : number;
+    success : false;
+    message : string;
+    errors : string[];
 } 
 
-export type GetResponse = {
+export type GetResponse<T> = {
     status : number,
     success : true,
     message : string,
-    data : QuestionBody[],
+    data : T[],
 }
 
-export type InsertResponse = {
+export type InsertResponse<T> = {
     status : number,
     success : true,
     message : string,
-    inserted_data : QuestionBody,
+    inserted_data : T,
 }
 
 export type DeleteResponse = {
@@ -27,4 +25,3 @@ export type DeleteResponse = {
     message : string,
     last_id : number
 }
-

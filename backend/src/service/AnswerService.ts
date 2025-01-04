@@ -1,4 +1,4 @@
-import { DeleteResponse, ErrorResponse, GetResponse, InsertResponse } from "../interfaces/APIResponseInterface/APIResponseInterface";
+import { DeleteResponse, ErrorResponse, GetResponse, InsertResponse } from "../types/APIResponseTypes/APIResponseTypes";
 import { AnswerRepository } from "../repositories/AnswerRepository";
 import { AnswerBody } from "../types/AnswerTypes/AnswerTypes";
 
@@ -63,7 +63,7 @@ export class AnswerService {
         let response : ErrorResponse | InsertResponse<AnswerBody>;
         try {
             const result = await this.repo.insertAnswer(newAnswer);
-            response = {status: 200, success: true, message: "Berhasil Insert data", inserted_data : result};
+            response = {status: 200, success: true, message: "Berhasil Insert data", inserted_data : result.lastRecord[0]};
         } catch (err) {
             response = {status: 201, success: false, message: "Gagal Insert data", errors: [err.message]};
         }
