@@ -26,7 +26,6 @@ const classModal = computed(() => {
     else return "title text-center text-light pt-3 pb-2 bg-danger";
 });
 
-
 </script>
 <template>
     <div ref="modal" class="notification-modal">
