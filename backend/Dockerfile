@@ -10,4 +10,10 @@ RUN npm rebuild sqlite3
 
 COPY . .
 
+# Build TypeScript → ini dijalankan saat `docker-compose build`, bukan saat `docker-compose up`
+RUN npm run build
+
+# Jalankan migrasi & aplikasi
+CMD npx knex migrate:latest --knexfile ./dist/database/knexfile.js --env pg && node ./dist/app.js
+
 EXPOSE 8080
